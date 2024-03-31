@@ -1,6 +1,9 @@
 "use client"
 import styles from '../../../styles/list.module.css'
-import { useParams } from 'next/navigation';
+
+interface Params {
+    params: { id: string }
+}
 
 interface BookList {
     rank: number;
@@ -36,8 +39,7 @@ const getListsOfBooks = async (id: string) => {
     return json;
 }
 
-export default async function ListPage() {
-    const { id } = useParams();
+export default async function ListPage({ params: { id } }: Params) {
     const bookLists = await getListsOfBooks(String(id));
     return <div>
         <h1>{bookLists.results.list_name}</h1>
