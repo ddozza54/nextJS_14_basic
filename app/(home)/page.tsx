@@ -13,9 +13,9 @@ export const metadata = {
     title: "HOME",
 }
 
-export const URL = "https://books-api.nomadcoders.workers.dev/lists";
 
 const getCategories = async () => {
+    const URL = "https://books-api.nomadcoders.workers.dev/lists";
     const response = await fetch(URL);
     const json = await response.json();
     return json;
