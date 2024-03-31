@@ -1,5 +1,5 @@
 import Category from '../components/category';
-
+import styles from '../../styles/home.module.css';
 interface BestSellerLists {
     list_name: string;
     display_name: string;
@@ -23,12 +23,14 @@ const getCategories = async () => {
 
 export default async function Home() {
     const categories = await getCategories();
-    return <div>
+    return <>
         <h1>The New York Times Best Seller Explorer</h1>
-        {categories.results.map((category: BestSellerLists) =>
-            <Category id={category.list_name_encoded}
-                listName={category.list_name} />
-        )}
-    </div>
+        <div className={styles.container}>
+            {categories.results.map((category: BestSellerLists) =>
+                <Category id={category.list_name_encoded}
+                    listName={category.list_name} />
+            )}
+        </div>
+    </>
 }
 

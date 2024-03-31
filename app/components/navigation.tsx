@@ -8,7 +8,7 @@ export default function Navigation() {
     return (
         <nav className={styles.nav}>
             <h2>
-                <Link href='/'>New York Best Sellers</Link>
+                <Link href='/'>Best Sellers</Link>
             </h2>
             <ul>
                 <li>

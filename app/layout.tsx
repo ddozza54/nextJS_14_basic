@@ -15,7 +15,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navigation />
-        {children}</body>
+        <div className='background'>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }

@@ -1,5 +1,5 @@
 "use client"
-import Link from 'next/link';
+import styles from '../../../styles/list.module.css'
 import { useParams } from 'next/navigation';
 
 interface BookList {
@@ -41,14 +41,16 @@ export default async function ListPage() {
     const bookLists = await getListsOfBooks(String(id));
     return <div>
         <h1>{bookLists.results.list_name}</h1>
-        {bookLists && bookLists.results.books.map((book: BookList) =>
-            <div key={book.primary_isbn10}>
-                <img src={book.book_image} />
-                <h4>{book.title}</h4>
-                <span>{book.author}</span>
-                <a href={book.amazon_product_url} target='_blank'>Buy Now 👉</a>
-            </div>
-        )
-        }
+        <div className={styles.container}>
+            {bookLists && bookLists.results.books.map((book: BookList) =>
+                <div key={book.primary_isbn10} className={styles.book}>
+                    <img src={book.book_image} />
+                    <h4>{book.title}</h4>
+                    <span>{book.author}</span>
+                    <a href={book.amazon_product_url} target='_blank'>Buy Now 👉</a>
+                </div>
+            )
+            }
+        </div>
     </div >
 }
