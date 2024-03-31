@@ -1,4 +1,13 @@
-import Link from 'next/link';
+import Category from '../components/category';
+
+interface BestSellerLists {
+    list_name: string;
+    display_name: string;
+    list_name_encoded: string;
+    oldest_published_date: string;
+    newest_published_date: string;
+    updated: string;
+}
 
 export const metadata = {
     title: "HOME",
@@ -16,12 +25,9 @@ export default async function Home() {
     const categories = await getCategories();
     return <div>
         <h1>The New York Times Best Seller Explorer</h1>
-        {categories.results.map((category) =>
-            <div key={category.list_name_encoded}>
-                <Link href={`/list/${category.list_name_encoded}`}>
-                    <h4>{category.list_name}</h4>
-                </Link>
-            </div>
+        {categories.results.map((category: BestSellerLists) =>
+            <Category id={category.list_name_encoded}
+                listName={category.list_name} />
         )}
     </div>
 }
