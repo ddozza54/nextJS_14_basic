@@ -1,5 +1,6 @@
 "use client"
 import styles from '../../../styles/list.module.css'
+import { API_URL } from '../../constans';
 
 interface Params {
     params: { id: string }
@@ -33,7 +34,7 @@ interface BookList {
 }
 
 const getListsOfBooks = async (id: string) => {
-    const URL = `https://books-api.nomadcoders.workers.dev/list?name=${id}`;
+    const URL = `${API_URL}list?name=${id}`;
     const response = await fetch(URL);
     const json = await response.json();
     return json;

@@ -1,5 +1,6 @@
 import Category from '../components/category';
 import styles from '../../styles/home.module.css';
+import { API_URL } from '../constans';
 interface BestSellerLists {
     list_name: string;
     display_name: string;
@@ -13,10 +14,8 @@ export const metadata = {
     title: "HOME",
 }
 
-
 const getCategories = async () => {
-    const URL = "https://books-api.nomadcoders.workers.dev/lists";
-    const response = await fetch(URL);
+    const response = await fetch(`${API_URL}lists`);
     const json = await response.json();
     return json;
 }
